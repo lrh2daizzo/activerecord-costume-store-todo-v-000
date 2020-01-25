@@ -19,3 +19,10 @@ load 'active_record/railties/databases.rake'
 task :console => :environment do
   Pry.start
 end
+
+require_relative './config/environment'
+load 'lib/tasks/migrations.rake'
+
+task :console => "db:migrate" do
+  Pry.start
+end
